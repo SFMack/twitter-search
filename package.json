@@ -1,0 +1,32 @@
+{
+	"name": "react-starter",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"dependencies": {
+		"axios": "^0.18.1",
+		"dotenv": "^6.2.0",
+		"express": "^4.16.3",
+		"fs": "0.0.1-security",
+		"lodash": "^4.17.15",
+		"net": "^1.0.2",
+		"next": "^7.0.2",
+		"normalize.css": "^8.0.1",
+		"prop-types": "^15.6.2",
+		"query-string": "^6.2.0",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0",
+		"tls": "0.0.1",
+		"whatwg-fetch": "^3.0.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"postinstall": "next build",
+		"dev": "node server.js",
+		"develop": "npm run dev",
+		"build": "next build",
+		"start": "NODE_ENV=production node server.js"
+	},
+	"author": "",
+	"license": "ISC"
+}
