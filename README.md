@@ -6,3 +6,10 @@ Twitter Search App with the following functionality
   a link to the tweet on twitter.com
 - Include a search box that allows the user to use any search term
 - Include an option that allows the user to choose how many tweets they receive
+
+Technologies Used
+
+- React
+- Node
+- Express
+- Next.js

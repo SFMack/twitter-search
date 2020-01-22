@@ -1,6 +1,4 @@
 import React from 'react';
-import App from '../components/App';
-import Flex, { Col } from '../components/Flex';
 import TwitterService from '../lib/Twitter';
 
 class Index extends React.Component {
@@ -64,14 +62,14 @@ class Index extends React.Component {
 
 	render() {
 		return (
-			<App>
-				<Flex>
-					<Col xs={8}></Col>
-					<Col xs={4}>
+			<div>
+				<div>
+					<div xs={8}></div>
+					<div xs={4}>
 						<div className='content'>
 							<div className='search-bar'>
-								<Flex xs={{ align: 'center', justify: 'space-between' }}>
-									<Col xs={8}>
+								<div xs={{ align: 'center', justify: 'space-between' }}>
+									<div xs={8}>
 										<input
 											type='text'
 											className='input-search'
@@ -80,8 +78,8 @@ class Index extends React.Component {
 											onChange={this.onChange}
 											placeholder='Search Topic'
 										/>
-									</Col>
-									<Col xs={8}>
+									</div>
+									<div xs={8}>
 										<input
 											type='text'
 											className='input-search'
@@ -90,13 +88,13 @@ class Index extends React.Component {
 											onChange={this.onChange}
 											placeholder='Max Tweet Count'
 										/>
-									</Col>
-									<Col>
+									</div>
+									<div>
 										<button className='btn' onClick={this.onSearch}>
 											Search
 										</button>
-									</Col>
-								</Flex>
+									</div>
+								</div>
 							</div>
 							<div className='tweet-container'>
 								{this.state.isLoading && <p>Loading...</p>}
@@ -104,15 +102,15 @@ class Index extends React.Component {
 								{!this.state.isLoading &&
 									this.state.tweets.map((item, key) => (
 										<div key={key} className='tweet-item'>
-											<Flex xs={{ align: 'center' }}>
-												<Col xs={{ right: 10 }}>
+											<div xs={{ align: 'center' }}>
+												<div xs={{ right: 10 }}>
 													<img
 														className='profile-image'
 														src={item.user.profile_image_url_https}
 														alt='Profile'
 													/>
-												</Col>
-												<Col>
+												</div>
+												<div>
 													<p>
 														<a
 															href={`https://twitter.com/${item.user.screen_name}`}
@@ -125,11 +123,11 @@ class Index extends React.Component {
 													<p>
 														<span>{item.created_at}</span>
 													</p>
-												</Col>
-											</Flex>
+												</div>
+											</div>
 											<p className='tweet-text'>{item.text}</p>
-											<Flex xs={{ justify: 'flex-end' }}>
-												<Col>
+											<div xs={{ justify: 'flex-end' }}>
+												<div>
 													<a
 														href={`https://twitter.com/${item.user.screen_name}/statuses/${item.id_str}`}
 														target='_blank'
@@ -137,14 +135,14 @@ class Index extends React.Component {
 													>
 														Go to tweet...
 													</a>
-												</Col>
-											</Flex>
+												</div>
+											</div>
 										</div>
 									))}
 							</div>
 						</div>
-					</Col>
-				</Flex>
+					</div>
+				</div>
 				<style jsx global>{`
 					body {
 						font-family: sans-serif;
@@ -246,7 +244,7 @@ class Index extends React.Component {
 						}
 					`}
 				</style>
-			</App>
+			</div>
 		);
 	}
 }
