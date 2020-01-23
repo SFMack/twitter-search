@@ -19,7 +19,7 @@ class Index extends React.Component {
 		q: '',
 		isLoading: false,
 		tweets: [],
-		count: 100,
+		count: '',
 		length: 0
 	};
 
@@ -33,7 +33,7 @@ class Index extends React.Component {
 		});
 
 		const q = this.state.q || '#coding';
-		const count = this.state.count;
+		const count = this.state.count || 100;
 
 		TwitterService.searchTweets({
 			accessToken: this.props.twitterAccessToken,
@@ -94,10 +94,11 @@ class Index extends React.Component {
 					</div>
 
 					{/* Tweet List */}
-					<div className='tweet-feed-list'>
-						{this.state.isLoading && <p>Loading...</p>}
-						<span>{this.state.length} tweets loaded</span>
-						{!this.state.isLoading &&
+					<div className='tweet-container'>
+						<div className='loading'>{this.state.length} Tweets Loaded</div>
+						{this.state.isLoading ? (
+							<p className='loading'>Loading...</p>
+						) : (
 							this.state.tweets.map((item, key) => (
 								<div key={key} className='tweet-item'>
 									<div>
@@ -136,11 +137,12 @@ class Index extends React.Component {
 										</div>
 									</div>
 								</div>
-							))}
+							))
+						)}
 					</div>
 				</div>
-				{/* End Tweet Feed Container */}
 
+				{/* Styles */}
 				<style jsx global>{`
 					body {
 						font-family: sans-serif;
@@ -164,6 +166,17 @@ class Index extends React.Component {
 
 						.tweet-feed-container {
 							width: 50vw;
+							margin: 0 auto;
+						}
+
+						.tweets-loaded {
+							padding-top: 1rem;
+							width: 10rem;
+							margin: 0 auto;
+						}
+
+						.loading {
+							padding-top: 1rem;
 							margin: 0 auto;
 						}
 
@@ -237,7 +250,5 @@ class Index extends React.Component {
 		);
 	}
 }
-
-Index.propTypes = {};
 
 export default Index;
