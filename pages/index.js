@@ -62,87 +62,85 @@ class Index extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<div>
-					<div xs={8}></div>
-					<div xs={4}>
-						<div className='content'>
-							<div className='search-bar'>
-								<div xs={{ align: 'center', justify: 'space-between' }}>
-									<div xs={8}>
-										<input
-											type='text'
-											className='input-search'
-											name='q'
-											value={this.state.q}
-											onChange={this.onChange}
-											placeholder='Search Topic'
-										/>
-									</div>
-									<div xs={8}>
-										<input
-											type='text'
-											className='input-search'
-											name='count'
-											value={this.state.count}
-											onChange={this.onChange}
-											placeholder='Max Tweet Count'
-										/>
-									</div>
-									<div>
-										<button className='btn' onClick={this.onSearch}>
-											Search
-										</button>
-									</div>
-								</div>
-							</div>
-							<div className='tweet-container'>
-								{this.state.isLoading && <p>Loading...</p>}
-								<span>{this.state.length} tweets loaded</span>
-								{!this.state.isLoading &&
-									this.state.tweets.map((item, key) => (
-										<div key={key} className='tweet-item'>
-											<div xs={{ align: 'center' }}>
-												<div xs={{ right: 10 }}>
-													<img
-														className='profile-image'
-														src={item.user.profile_image_url_https}
-														alt='Profile'
-													/>
-												</div>
-												<div>
-													<p>
-														<a
-															href={`https://twitter.com/${item.user.screen_name}`}
-															target='_blank'
-															rel='noreferrer noopener'
-														>
-															{item.user.name}
-														</a>
-													</p>
-													<p>
-														<span>{item.created_at}</span>
-													</p>
-												</div>
-											</div>
-											<p className='tweet-text'>{item.text}</p>
-											<div xs={{ justify: 'flex-end' }}>
-												<div>
-													<a
-														href={`https://twitter.com/${item.user.screen_name}/statuses/${item.id_str}`}
-														target='_blank'
-														rel='noreferrer noopener'
-													>
-														Go to tweet...
-													</a>
-												</div>
-											</div>
-										</div>
-									))}
-							</div>
+			<div className='app-container'>
+				<div className='tweet-feed-container'>
+					{/* Search */}
+					<div className='search-content'>
+						<div>
+							<input
+								type='text'
+								className='input-search'
+								name='q'
+								value={this.state.q}
+								onChange={this.onChange}
+								placeholder='Search Topic'
+							/>
+						</div>
+						<div>
+							<input
+								type='text'
+								className='input-search'
+								name='count'
+								value={this.state.count}
+								onChange={this.onChange}
+								placeholder='Max Tweet Count'
+							/>
+						</div>
+						<div>
+							<button className='btn' onClick={this.onSearch}>
+								Search
+							</button>
 						</div>
 					</div>
+
+					{/* Tweet List */}
+					<div className='tweet-feed-list'>
+						{this.state.isLoading && <p>Loading...</p>}
+						<span>{this.state.length} tweets loaded</span>
+						{!this.state.isLoading &&
+							this.state.tweets.map((item, key) => (
+								<div key={key} className='tweet-item'>
+									<div>
+										<div>
+											<img
+												className='profile-image'
+												src={item.user.profile_image_url_https}
+												alt='Profile'
+											/>
+										</div>
+										<div>
+											<p>
+												<a
+													href={`https://twitter.com/${item.user.screen_name}`}
+													target='_blank'
+													rel='noreferrer noopener'
+												>
+													{item.user.name}
+												</a>
+											</p>
+											<p>
+												<span>{item.created_at}</span>
+											</p>
+										</div>
+									</div>
+									<p className='tweet-text'>{item.text}</p>
+									<div>
+										<div>
+											<a
+												href={`https://twitter.com/${item.user.screen_name}/statuses/${item.id_str}`}
+												target='_blank'
+												rel='noreferrer noopener'
+											>
+												Go to tweet...
+											</a>
+										</div>
+									</div>
+								</div>
+							))}
+					</div>
 				</div>
+				{/* End Tweet Feed Container */}
+
 				<style jsx global>{`
 					body {
 						font-family: sans-serif;
@@ -159,33 +157,24 @@ class Index extends React.Component {
 				`}</style>
 				<style jsx>
 					{`
-						.content {
-							padding: 0 15px;
+						.app-container {
+							width: 100vw;
+							height: 100vh;
 						}
 
-						.search-bar {
+						.tweet-feed-container {
+							width: 50vw;
+							margin: 0 auto;
+						}
+
+						.search-content {
+							display: flex;
 							height: 15vh;
 							border-radius: 10px;
 							box-shadow: 0 5px 20px 0 rgba(204, 204, 204, 0.5);
 							padding: 10px 15px;
 							margin: 10px 0;
 							word-break: break-all;
-						}
-
-						.popular-categories {
-							margin-top: 10px;
-						}
-
-						.popular-topics {
-							margin-bottom: 5px;
-							color: #8c8c8c;
-							font-size: 14px;
-						}
-
-						.category-item {
-							color: #00a4ef;
-							margin-right: 10px;
-							cursor: pointer;
 						}
 
 						.tweet-container {
