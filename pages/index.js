@@ -66,7 +66,7 @@ class Index extends React.Component {
 				<div className='tweet-feed-container'>
 					{/* Search */}
 					<div className='search-content'>
-						<div>
+						<div className='search'>
 							<input
 								type='text'
 								className='input-search'
@@ -76,7 +76,7 @@ class Index extends React.Component {
 								placeholder='Search Topic'
 							/>
 						</div>
-						<div>
+						<div className='search'>
 							<input
 								type='text'
 								className='input-search'
@@ -86,7 +86,7 @@ class Index extends React.Component {
 								placeholder='Max Tweet Count'
 							/>
 						</div>
-						<div>
+						<div className='search-btn'>
 							<button className='btn' onClick={this.onSearch}>
 								Search
 							</button>
@@ -182,12 +182,23 @@ class Index extends React.Component {
 
 						.search-content {
 							display: flex;
+							justify-content: space-between;
 							height: 15vh;
 							border-radius: 10px;
 							box-shadow: 0 5px 20px 0 rgba(204, 204, 204, 0.5);
 							padding: 10px 15px;
 							margin: 10px 0;
 							word-break: break-all;
+						}
+
+						.search {
+							padding-top: 1.5rem;
+							width: 40%;
+						}
+
+						.search-btn {
+							padding-top: 1rem;
+							width: 15%;
 						}
 
 						.tweet-container {
@@ -224,7 +235,7 @@ class Index extends React.Component {
 							border-bottom: 1px solid #d3dfef;
 							font-size: 14px;
 							letter-spacing: 0.3px;
-							padding: 14px 20px;
+							padding: 10px;
 						}
 
 						.btn {
