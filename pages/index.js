@@ -120,7 +120,7 @@ class Index extends React.Component {
 												</a>
 											</p>
 											<p>
-												<span>{item.created_at}</span>
+												<span>{Date(item.created_at)}</span>
 											</p>
 										</div>
 									</div>
