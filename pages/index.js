@@ -33,15 +33,19 @@ class Index extends React.Component {
 		});
 
 		const q = this.state.q || '#coding';
-		const count = this.state.count || 100;
+		const count = this.state.count ? this.state.count / 10 : 25;
 
 		TwitterService.searchTweets({
 			accessToken: this.props.twitterAccessToken,
 			q,
 			count
 		}).then(tweets => {
+			let allTweets = [];
+			tweets.map(tweetArr => allTweets.push(tweetArr));
+			console.log(count);
+			console.log(allTweets);
 			this.setState({
-				tweets,
+				tweets: allTweets,
 				isLoading: false,
 				length: tweets.length
 			});
