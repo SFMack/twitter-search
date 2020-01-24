@@ -33,7 +33,7 @@ class Index extends React.Component {
 		});
 
 		const q = this.state.q || '#coding';
-		const count = this.state.count ? this.state.count / 10 : 25;
+		const count = this.state.count ? this.state.count / 20 : 20;
 
 		TwitterService.searchTweets({
 			accessToken: this.props.twitterAccessToken,
