@@ -33,7 +33,7 @@ class Index extends React.Component {
 		});
 
 		const q = this.state.q || '#coding';
-		const count = this.state.count ? this.state.count / 20 : 20;
+		const count = this.state.count ? this.state.count / 25 : 10;
 
 		TwitterService.searchTweets({
 			accessToken: this.props.twitterAccessToken,
@@ -87,7 +87,7 @@ class Index extends React.Component {
 								name='count'
 								value={this.state.count}
 								onChange={this.onChange}
-								placeholder='Max Tweet Count'
+								placeholder='Tweet Count (2500 Max)'
 							/>
 						</div>
 						<div className='search-btn'>
